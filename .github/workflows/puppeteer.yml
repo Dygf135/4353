@@ -1,0 +1,24 @@
+name: Run Puppeteer Script
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-puppeteer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Puppeteer script
+        run: node scripts/puppeteer-script.js
